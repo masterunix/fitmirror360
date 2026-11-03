@@ -98,7 +98,6 @@ export function createAvatar(container, opts = {}) {
   container.appendChild(renderer.domElement);
 
   const scene = new THREE.Scene();
-  scene.fog = new THREE.Fog(0x070707, 6, 12);
   const camera = new THREE.PerspectiveCamera(28, 1, 0.05, 50);
 
   // lights
@@ -158,6 +157,15 @@ export function createAvatar(container, opts = {}) {
   arc.position.y = 0.004;
   platform.add(arc);
   scene.add(platform);
+
+  const applyTheme = () => {
+    const light = document.documentElement.dataset.theme === "light";
+    arcMat.color.set(light ? 0x151010 : 0xffffff);
+    arcMat.opacity = light ? 0.35 : 0.55;
+    ticks.material.opacity = light ? 0.75 : 1;
+  };
+  applyTheme();
+  window.addEventListener("fm-theme", applyTheme);
 
   // scan ring
   const scanRing = new THREE.Mesh(
@@ -334,7 +342,7 @@ export function createAvatar(container, opts = {}) {
   controls.enableDamping = true;
   controls.dampingFactor = 0.08;
   controls.enablePan = false;
-  controls.enableZoom = o.zoom;
+  controls.enableZoom = o.zoom && !window.matchMedia("(pointer: coarse)").matches;
   controls.minDistance = 2.2;
   controls.maxDistance = 7;
   controls.minPolarAngle = Math.PI * 0.3;

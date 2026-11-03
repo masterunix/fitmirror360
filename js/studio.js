@@ -422,7 +422,7 @@ function renderLooks() {
   }
   list.innerHTML = looks.map((l, i) => `
     <div class="saved-item" data-i="${i}" tabindex="0" role="button" aria-label="Load ${l.name}">
-      <button class="rm" data-rm="${i}" aria-label="Remove look">×</button>
+      <button class="rm" data-rm="${i}" aria-label="Remove look"><svg class="icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" style="width:12px;height:12px"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
       <div class="sw" style="background:${l.color}">${l.image ? `<img src="${l.image}" alt="" />` : ""}</div>
       <b>${escapeHtml(l.name)}</b>
       <small>Size ${l.size} · ${TYPE_NAME[l.type]}</small>

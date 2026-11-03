@@ -39,6 +39,33 @@ export function toast(msg) {
 }
 window.fmToast = toast;
 
+// light / dark theme
+document.querySelectorAll(".theme-btn").forEach((b) =>
+  b.addEventListener("click", () => {
+    const next = document.documentElement.dataset.theme === "light" ? "dark" : "light";
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem("fm.theme", next); } catch {}
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.content = next === "light" ? "#f7f3f1" : "#070707";
+    window.dispatchEvent(new CustomEvent("fm-theme", { detail: next }));
+  })
+);
+if (document.documentElement.dataset.theme === "light") {
+  document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#f7f3f1");
+}
+
+// block pinch / double-tap zoom on mobile (iOS ignores user-scalable=no)
+["gesturestart", "gesturechange", "gestureend"].forEach((ev) =>
+  document.addEventListener(ev, (e) => e.preventDefault(), { passive: false })
+);
+document.addEventListener("touchmove", (e) => { if (e.touches.length > 1) e.preventDefault(); }, { passive: false });
+let lastTouchEnd = 0;
+document.addEventListener("touchend", (e) => {
+  const now = Date.now();
+  if (now - lastTouchEnd < 300 && !e.target.closest("input, textarea, select")) e.preventDefault();
+  lastTouchEnd = now;
+}, { passive: false });
+
 document.querySelectorAll("[data-year]").forEach((el) => (el.textContent = new Date().getFullYear()));
 
 // newsletter forms
