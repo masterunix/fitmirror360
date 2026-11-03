@@ -680,7 +680,8 @@ input[type=range]::-moz-range-thumb { width: 14px; height: 14px; border-radius: 
 .price-card .amt { font-family: var(--display); font-size: 44px; font-weight: 800; line-height: 1; }
 .price-card .amt small { font-size: 15px; color: var(--muted); font-family: var(--body); font-weight: 600; }
 .price-card .btn { width: 100%; }
-.price-toggle { display: inline-flex; margin: 0 auto 36px; }
+.price-toggle { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; width: min(260px, 100%) !important; margin: 0 auto 36px; }
+.price-toggle button { white-space: nowrap; padding: 10px 14px; }
 @media (max-width: 900px) { .pricing { grid-template-columns: 1fr; } }
 
 .demo-wrap { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(24px, 5vw, 64px); align-items: start; }
