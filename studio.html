@@ -31,7 +31,7 @@
       <a href="/#how">How it works</a>
       <a href="/studio" class="active">Try-On Studio</a>
       <a href="/brands">For Brands</a>
-      <a href="/brands#pricing">Pricing</a>
+      <a href="/#pricing">Pricing</a>
       <a href="/#faq">FAQ</a>
     </nav>
     <div class="nav-cta">
@@ -61,8 +61,8 @@
           <input type="file" id="fileInput" accept="image/*" aria-label="Upload garment image" />
           <div class="dz-empty">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5"/><path d="M12 3v12"/></svg>
-            <b>Upload a garment image</b>
-            <small>Drag &amp; drop or tap · JPG, PNG, WEBP</small>
+            <b>Upload a screenshot or photo</b>
+            <small>Of the garment you want to try. JPG, PNG or WEBP</small>
           </div>
           <div class="dz-preview">
             <img id="dzImg" alt="Uploaded garment" />
@@ -102,7 +102,7 @@
       </div>
 
       <div class="panel-section">
-        <div class="panel-title"><span class="n">3</span><h3>Generate</h3><span class="meta">≈ 3 sec</span></div>
+        <div class="panel-title"><span class="n">3</span><h3>Generate</h3></div>
         <button class="btn btn-red btn-lg" id="generate" style="width:100%">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 1.9 5.8L20 10l-5 3.8L16.5 20 12 16.6 7.5 20 9 13.8 4 10l6.1-1.2Z"/></svg>
           Generate my try-on
@@ -148,8 +148,9 @@
           <div class="confidence"><div class="ring" id="confRing"><span id="confVal">94%</span></div>Fit<br/>confidence</div>
         </div>
         <div class="zones" id="zones"></div>
+        <div class="style-row"><small>Wear it with</small><div class="style-chips" id="styleIdeas"></div></div>
         <div class="report-actions">
-          <button class="btn btn-red" id="shopBtn">Add size M to bag</button>
+          <button class="btn btn-red" id="shopBtn">Buy size M</button>
           <button class="btn btn-ghost" id="saveBtn">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21 12 16 5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2Z"/></svg>Save look
           </button>
@@ -172,10 +173,10 @@
     <div class="footer-grid">
       <div>
         <img src="/assets/logo.png" alt="FitMirror 360" width="518" height="367" />
-        <p>AI-powered virtual try-on that bridges the physical fitting room and online shopping. Don't just imagine the fit. See it before you buy it.</p>
+        <p>Virtual try-on for anyone who's tired of guessing their size online. Upload a garment, add your measurements and see how it fits before you buy.</p>
       </div>
-      <div><h4>Product</h4><ul><li><a href="/studio">Try-On Studio</a></li><li><a href="/#how">How it works</a></li><li><a href="/#faq">FAQ</a></li></ul></div>
-      <div><h4>Business</h4><ul><li><a href="/brands">For Brands</a></li><li><a href="/brands#integrate">Integration</a></li><li><a href="/brands#pricing">Pricing</a></li><li><a href="/brands#demo">Book a demo</a></li></ul></div>
+      <div><h4>Product</h4><ul><li><a href="/studio">Try-On Studio</a></li><li><a href="/#how">How it works</a></li><li><a href="/#pricing">Plans</a></li><li><a href="/#faq">FAQ</a></li></ul></div>
+      <div><h4>Business</h4><ul><li><a href="/brands">For Brands</a></li><li><a href="/brands#integrate">Integration</a></li><li><a href="/brands#pricing">Brand pricing</a></li><li><a href="/brands#demo">Book a demo</a></li></ul></div>
       <div><h4>Company</h4><ul><li><a href="/#mission">Our mission</a></li><li><a href="mailto:hello@fitmirror360.com">Contact</a></li><li><a href="/privacy">Privacy</a></li><li><a href="/privacy#terms">Terms</a></li></ul></div>
     </div>
     <div class="footer-bottom"><span>© <span data-year></span> FitMirror 360. All rights reserved.</span></div>

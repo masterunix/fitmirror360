@@ -19,6 +19,12 @@ const ZONES = { top: ["chest", "waist", "hips", "length"], dress: ["chest", "wai
 const FIT = { slim: [0, 5], regular: [3, 9], relaxed: [8, 16] };
 const LABEL = { chest: "Chest", waist: "Waist", hips: "Hips", length: "Length", shoulders: "Shoulders", thigh: "Thigh" };
 const TYPE_NAME = { top: "Top", dress: "Dress", outer: "Outerwear", bottoms: "Bottoms" };
+const STYLE = {
+  top: ["Straight-leg jeans", "White sneakers", "Light denim jacket"],
+  dress: ["Block heels", "Cropped cardigan", "Small shoulder bag"],
+  outer: ["Plain white tee", "Dark slim trousers", "Chelsea boots"],
+  bottoms: ["Tucked-in shirt", "Loafers", "Simple leather belt"],
+};
 
 const SAMPLES = [
   { name: "Signature Tee", type: "top", color: "#e3152b" },
@@ -158,10 +164,12 @@ function renderReport() {
 
   $("#recSize").textContent = recSize;
   $("#recText").textContent = state.size === recSize ? `Size ${recSize} fits you best` : `We recommend ${recSize} (viewing ${state.size})`;
-  $("#recSub").textContent = `${state.garment.name} · ${TYPE_NAME[state.garment.type]} · ${state.fit} fit`;
+  $("#recSub").textContent = `${state.garment.name} · ${TYPE_NAME[state.garment.type]} · ${state.fit} fit · from the brand's size chart`;
   $("#confRing").style.setProperty("--v", rec.conf);
   $("#confVal").textContent = rec.conf + "%";
-  $("#shopBtn").textContent = `Add size ${state.size} to bag`;
+  $("#shopBtn").textContent = `Buy size ${state.size}`;
+  const ideas = STYLE[state.garment.type];
+  $("#styleIdeas").innerHTML = ideas.map((i) => `<span>${i}</span>`).join("");
 
   $("#zones").innerHTML = Object.entries(r).map(([z, v]) => `
     <div class="zone">
@@ -403,7 +411,7 @@ $("#scanBtn").addEventListener("click", (e) => {
 });
 
 // ---------- actions ----------
-$("#shopBtn").addEventListener("click", () => toast(`${state.garment.name} in size ${state.size} added to your bag.`));
+$("#shopBtn").addEventListener("click", () => toast(`Taking you to the brand's store with size ${state.size} selected.`));
 $("#shareBtn").addEventListener("click", async () => {
   const url = location.origin + "/studio";
   try {
@@ -417,7 +425,7 @@ function renderLooks() {
   const list = $("#savedList");
   $("#savedCount").textContent = `${looks.length} look${looks.length === 1 ? "" : "s"}`;
   if (!looks.length) {
-    list.innerHTML = `<p class="saved-empty">Looks you save appear here so you can compare sizes and styles side by side.</p>`;
+    list.innerHTML = `<p class="saved-empty">Save looks here to compare sizes and styles before you buy.</p>`;
     return;
   }
   list.innerHTML = looks.map((l, i) => `
