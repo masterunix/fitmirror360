@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Try-On Studio — FitMirror 360</title>
+  <meta name="description" content="Upload a garment, enter your measurements and see it on your personalised 3D avatar in 360°." />
+  <meta name="theme-color" content="#070707" />
+  <meta property="og:title" content="FitMirror 360 Try-On Studio" />
+  <meta property="og:image" content="/assets/og.jpg" />
+  <link rel="icon" type="image/png" href="/assets/favicon.png" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+  <script type="importmap">
+    { "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    } }
+  </script>
+</head>
+<body class="noise">
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="/" class="brand" aria-label="FitMirror 360 home"><img src="/assets/logo.png" alt="FitMirror 360" width="518" height="367" /></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/#how">How it works</a>
+      <a href="/studio" class="active">Try-On Studio</a>
+      <a href="/brands">For Brands</a>
+      <a href="/brands#pricing">Pricing</a>
+      <a href="/#faq">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="/brands#demo" class="btn btn-ghost btn-sm">Book a demo</a>
+      <a href="#saved" class="btn btn-red btn-sm">My looks</a>
+      <button class="menu-btn" aria-label="Open menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="studio-head">
+    <div>
+      <span class="eyebrow">Try-On Studio</span>
+      <h1 style="margin-top:12px">Your mirror, <span class="red">your measurements.</span></h1>
+      <p>Upload a garment, tune your body measurements and see the fit on your 3D avatar.</p>
+    </div>
+  </div>
+
+  <div class="studio">
+    <!-- CONTROLS -->
+    <aside class="panel" aria-label="Try-on settings">
+      <div class="panel-section">
+        <div class="panel-title"><span class="n">1</span><h3>Garment</h3><span class="meta" id="garmentMeta">Signature Tee</span></div>
+        <label class="dropzone" id="dropzone">
+          <input type="file" id="fileInput" accept="image/*" aria-label="Upload garment image" />
+          <div class="dz-empty">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5"/><path d="M12 3v12"/></svg>
+            <b>Upload a garment image</b>
+            <small>Drag &amp; drop or tap · JPG, PNG, WEBP</small>
+          </div>
+          <div class="dz-preview">
+            <img id="dzImg" alt="Uploaded garment" />
+            <div style="min-width:0">
+              <b id="dzName">garment.jpg</b>
+              <small><span class="swatch" id="dzSwatch"></span><span id="dzInfo">Colour detected</span></small>
+              <small style="color:var(--red-2);font-weight:700">Tap to replace</small>
+            </div>
+          </div>
+        </label>
+        <div class="samples" id="samples"><small>Or try:</small></div>
+
+        <div class="row-label"><span>Category</span></div>
+        <div class="seg" id="typeSeg" role="radiogroup" aria-label="Garment category">
+          <button data-v="top" class="on">Top</button>
+          <button data-v="dress">Dress</button>
+          <button data-v="outer">Outerwear</button>
+          <button data-v="bottoms">Bottoms</button>
+        </div>
+
+        <div class="row-label"><span>Garment size</span><span style="text-transform:none;letter-spacing:0;color:var(--ok)">● recommended</span></div>
+        <div class="sizes" id="sizes"></div>
+      </div>
+
+      <div class="panel-section">
+        <div class="panel-title"><span class="n">2</span><h3>Your measurements</h3>
+          <div class="seg" id="unitSeg" style="margin-left:auto;width:112px"><button data-v="cm" class="on">cm</button><button data-v="in">in</button></div>
+        </div>
+        <div class="measure" id="measure"></div>
+
+        <div class="row-label"><span>Preferred fit</span></div>
+        <div class="seg" id="fitSeg">
+          <button data-v="slim">Slim</button>
+          <button data-v="regular" class="on">Regular</button>
+          <button data-v="relaxed">Relaxed</button>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <div class="panel-title"><span class="n">3</span><h3>Generate</h3><span class="meta">≈ 3 sec</span></div>
+        <button class="btn btn-red btn-lg" id="generate" style="width:100%">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 1.9 5.8L20 10l-5 3.8L16.5 20 12 16.6 7.5 20 9 13.8 4 10l6.1-1.2Z"/></svg>
+          Generate my try-on
+        </button>
+      </div>
+    </aside>
+
+    <!-- VIEWER -->
+    <section class="viewer" aria-label="3D avatar viewer">
+      <div class="stage" id="stage">
+        <div class="stage-grid"></div>
+        <div class="view-tools">
+          <button class="tool" data-view="front">Front</button>
+          <button class="tool" data-view="side">Side</button>
+          <button class="tool" data-view="back">Back</button>
+          <button class="tool on" id="spinBtn" aria-pressed="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>360°
+          </button>
+          <button class="tool on" id="scanBtn" aria-pressed="true">Scan</button>
+        </div>
+        <div class="stage-status ready" id="stageStatus"><span class="dot"></span><span id="stageStatusText">Avatar ready</span></div>
+        <span class="stage-hint">Drag to rotate</span>
+        <div class="gen-overlay" id="genOverlay" aria-live="polite">
+          <div class="gen-box">
+            <div class="gen-ring"></div>
+            <ul class="gen-steps" id="genSteps">
+              <li>Analysing garment shape &amp; colour</li>
+              <li>Mapping body landmarks</li>
+              <li>Building your 3D avatar</li>
+              <li>Draping fabric &amp; checking fit</li>
+            </ul>
+            <div class="gen-bar"><i id="genBar"></i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel report" id="report">
+        <div class="report-head">
+          <div class="rec-size">
+            <div class="big" id="recSize">M</div>
+            <div><small>Recommended size</small><b id="recText">Size M fits you best</b><small id="recSub">Based on 6 measurements · regular fit</small></div>
+          </div>
+          <div class="confidence"><div class="ring" id="confRing"><span id="confVal">94%</span></div>Fit<br/>confidence</div>
+        </div>
+        <div class="zones" id="zones"></div>
+        <div class="report-actions">
+          <button class="btn btn-red" id="shopBtn">Add size M to bag</button>
+          <button class="btn btn-ghost" id="saveBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21 12 16 5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2Z"/></svg>Save look
+          </button>
+          <button class="btn btn-ghost" id="shareBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>Share
+          </button>
+        </div>
+      </div>
+
+      <div class="panel saved" id="saved">
+        <div class="panel-title" style="margin-bottom:14px"><h3>My saved looks</h3><span class="meta" id="savedCount">0 looks</span></div>
+        <div class="saved-list" id="savedList"></div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="/assets/logo.png" alt="FitMirror 360" width="518" height="367" />
+        <p>AI-powered virtual try-on that bridges the physical fitting room and online shopping. Don't just imagine the fit — see it before you buy it.</p>
+      </div>
+      <div><h4>Product</h4><ul><li><a href="/studio">Try-On Studio</a></li><li><a href="/#how">How it works</a></li><li><a href="/#faq">FAQ</a></li></ul></div>
+      <div><h4>Business</h4><ul><li><a href="/brands">For Brands</a></li><li><a href="/brands#integrate">Integration</a></li><li><a href="/brands#pricing">Pricing</a></li><li><a href="/brands#demo">Book a demo</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="/#mission">Our mission</a></li><li><a href="mailto:hello@fitmirror360.com">Contact</a></li><li><a href="/privacy">Privacy</a></li><li><a href="/privacy#terms">Terms</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© <span data-year></span> FitMirror 360. All rights reserved.</span></div>
+  </div>
+</footer>
+
+<script type="module" src="/js/main.js"></script>
+<script type="module" src="/js/studio.js"></script>
+</body>
+</html>

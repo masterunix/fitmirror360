@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>For Brands — FitMirror 360</title>
+  <meta name="description" content="Add AI-powered virtual try-on to your e-commerce store. Increase purchase confidence and reduce fit-related returns with FitMirror 360." />
+  <meta name="theme-color" content="#070707" />
+  <meta property="og:title" content="FitMirror 360 for Brands" />
+  <meta property="og:image" content="/assets/og.jpg" />
+  <link rel="icon" type="image/png" href="/assets/favicon.png" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+  <script type="importmap">
+    { "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    } }
+  </script>
+</head>
+<body class="noise">
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="/" class="brand" aria-label="FitMirror 360 home"><img src="/assets/logo.png" alt="FitMirror 360" width="518" height="367" /></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/#how">How it works</a>
+      <a href="/studio">Try-On Studio</a>
+      <a href="/brands" class="active">For Brands</a>
+      <a href="#pricing">Pricing</a>
+      <a href="/#faq">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="/studio" class="btn btn-ghost btn-sm">Try it on</a>
+      <a href="#demo" class="btn btn-red btn-sm">Book a demo</a>
+      <button class="menu-btn" aria-label="Open menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow reveal">FitMirror 360 for brands</span>
+        <h1 class="reveal" data-delay="1">Put a <em>fitting room</em> on every product page.</h1>
+        <p class="lead reveal" data-delay="2">Our virtual try-on drops into your existing store. Shoppers tap one button, enter their measurements and see your garment on their own 3D avatar — without ever leaving the page.</p>
+        <div class="hero-actions reveal" data-delay="3">
+          <a href="#demo" class="btn btn-red btn-lg">Book a demo</a>
+          <a href="#integrate" class="btn btn-ghost btn-lg">See the integration</a>
+        </div>
+        <div class="hero-proof reveal" data-delay="4" style="gap:28px">
+          <div><b style="font-family:var(--display);font-size:22px;color:var(--text)">1 line</b><br/>of code to install</div>
+          <div><b style="font-family:var(--display);font-size:22px;color:var(--text)">&lt; 3 s</b><br/>avatar generation</div>
+          <div><b style="font-family:var(--display);font-size:22px;color:var(--text)">0</b><br/>checkout disruption</div>
+        </div>
+      </div>
+
+      <!-- product page mock -->
+      <div class="shop-mock reveal" data-delay="2">
+        <div class="shop-bar"><i></i><i></i><i></i><span class="url">yourbrand.com/products/oversized-crew-tee</span></div>
+        <div class="shop-body">
+          <div class="shop-img" id="shopImg">
+            <span class="badge" id="shopBadge">NEW IN</span>
+            <svg id="shopTee" viewBox="0 0 200 200" aria-hidden="true">
+              <path d="M70 22 38 36 18 74l26 12 10-18v112h92V68l10 18 26-12-20-38-32-14c-3 12-14 20-30 20S73 34 70 22Z" fill="#e3152b"/>
+              <path d="M70 22c3 12 14 20 30 20s27-8 30-20" fill="none" stroke="#9c0d1d" stroke-width="3"/>
+            </svg>
+          </div>
+          <div class="shop-info">
+            <span class="brandname">Your Brand</span>
+            <h4>Oversized Crew Tee</h4>
+            <span class="price">£35.00</span>
+            <div class="shop-sizes" id="shopSizes"><span>XS</span><span>S</span><span class="on">M</span><span>L</span><span>XL</span></div>
+            <button class="fm-btn" id="fmBtn"><img src="/assets/logo.png" alt="" />Try it on in 360°</button>
+            <div class="fm-result" id="fmResult">Your best fit: <b>Size L</b> · relaxed through the chest, true to fit at the waist.</div>
+            <button class="add-cart" id="addCart">Add to bag</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container" style="padding:30px 24px 10px">
+    <p style="text-align:center;color:var(--dim);font-weight:700;font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin:0 0 20px">Works with the platform you already use</p>
+    <div class="logos">
+      <span>Shopify</span><span>WooCommerce</span><span>Magento</span><span>BigCommerce</span><span>Salesforce Commerce</span><span>Headless / API</span>
+    </div>
+  </section>
+
+  <!-- value -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Why brands choose us</span>
+        <h2>Confidence in. <span class="red">Returns out.</span></h2>
+        <p class="lead">When shoppers can see the fit, they buy the right size the first time. That's better for your customers, your margins and the planet.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card reveal">
+          <span class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 6-7"/></svg></span>
+          <h3>Higher purchase confidence</h3>
+          <p>Shoppers who see a garment on their own avatar hesitate less and add to bag sooner.</p>
+        </article>
+        <article class="card reveal" data-delay="1">
+          <span class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></svg></span>
+          <h3>Fewer fit-related returns</h3>
+          <p>Measurement-based size recommendations help customers get it right before it ships.</p>
+        </article>
+        <article class="card reveal" data-delay="2">
+          <span class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="M8 11h6M11 8v6"/></svg></span>
+          <h3>Sizing intelligence</h3>
+          <p>See which products run small or large and how your size curve matches real customers.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- integrate -->
+  <section class="section" id="integrate" style="padding-top:0">
+    <div class="container">
+      <div class="demo-wrap">
+        <div>
+          <div class="section-head reveal" style="margin-bottom:36px">
+            <span class="eyebrow">Integration</span>
+            <h2>Live on your store <span class="outline-text">this week.</span></h2>
+          </div>
+          <div class="timeline">
+            <div class="tl reveal"><span class="n">1</span><div><h3>Install</h3><p>Add our script tag, or install the FitMirror 360 app from your platform's marketplace.</p></div></div>
+            <div class="tl reveal"><span class="n">2</span><div><h3>Sync your catalogue</h3><p>We import product images and size charts automatically and map each garment for try-on.</p></div></div>
+            <div class="tl reveal"><span class="n">3</span><div><h3>Match your brand</h3><p>Choose colours, button style and placement so the widget feels native to your store.</p></div></div>
+            <div class="tl reveal"><span class="n">4</span><div><h3>Go live &amp; learn</h3><p>The FitMirror 360 button appears on product pages, and fit insights flow into your dashboard.</p></div></div>
+          </div>
+        </div>
+        <div style="display:grid;gap:18px">
+          <div class="code reveal">
+            <div class="code-head">
+              <div class="tabs" id="codeTabs"><button class="on" data-t="html">HTML</button><button data-t="shopify">Shopify</button><button data-t="react">React</button></div>
+              <button class="copy-btn" id="copyBtn">Copy</button>
+            </div>
+            <pre id="codeBox"></pre>
+          </div>
+          <div class="panel dash reveal">
+            <div class="dash-top"><b>Fit insights</b><span class="tag">Last 30 days</span></div>
+            <div class="kpis">
+              <div class="kpi"><small>Try-on sessions</small><b>48.2k</b><span class="up">▲ 18% vs last month</span></div>
+              <div class="kpi"><small>Add-to-bag after try-on</small><b>31%</b><span class="up">▲ 6 pts</span></div>
+              <div class="kpi"><small>Size-related returns</small><b>−24%</b><span class="up">▼ since launch</span></div>
+            </div>
+            <div class="chart">
+              <svg viewBox="0 0 400 140" preserveAspectRatio="none" aria-label="Try-on sessions trending upward">
+                <defs><linearGradient id="ga" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#e3152b" stop-opacity=".45"/><stop offset="1" stop-color="#e3152b" stop-opacity="0"/></linearGradient></defs>
+                <g stroke="rgba(255,255,255,.06)"><path d="M0 35h400M0 70h400M0 105h400"/></g>
+                <path d="M0 118 L33 110 L66 112 L100 96 L133 100 L166 84 L200 78 L233 82 L266 60 L300 56 L333 44 L366 40 L400 26 L400 140 L0 140Z" fill="url(#ga)"/>
+                <path d="M0 118 L33 110 L66 112 L100 96 L133 100 L166 84 L200 78 L233 82 L266 60 L300 56 L333 44 L366 40 L400 26" fill="none" stroke="#ff3046" stroke-width="2.5" vector-effect="non-scaling-stroke"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- pricing -->
+  <section class="section" id="pricing" style="padding-top:0">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Pricing</span>
+        <h2>Plans that grow with you.</h2>
+        <p class="lead">Every plan includes the try-on widget, 3D avatars and size recommendations.</p>
+      </div>
+      <div style="display:flex;justify-content:center" class="reveal">
+        <div class="seg price-toggle" id="billSeg" style="width:260px"><button data-v="m" class="on">Monthly</button><button data-v="y">Yearly · −20%</button></div>
+      </div>
+      <div class="pricing">
+        <article class="card price-card reveal">
+          <span class="tag">Starter</span>
+          <div class="amt"><span data-m="249" data-y="199">£249</span><small> / month</small></div>
+          <p style="margin:0">For emerging labels launching virtual try-on.</p>
+          <ul class="check-list">
+            <li><span>Up to 5,000 try-ons / month</span></li>
+            <li><span>Up to 200 products</span></li>
+            <li><span>Shopify &amp; WooCommerce apps</span></li>
+            <li><span>Standard widget themes</span></li>
+          </ul>
+          <a href="#demo" class="btn btn-ghost">Get started</a>
+        </article>
+        <article class="card price-card hot reveal" data-delay="1">
+          <span class="tag red">Most popular · Growth</span>
+          <div class="amt"><span data-m="699" data-y="559">£699</span><small> / month</small></div>
+          <p style="margin:0">For growing brands that want insight as well as try-on.</p>
+          <ul class="check-list">
+            <li><span>Up to 30,000 try-ons / month</span></li>
+            <li><span>Unlimited products</span></li>
+            <li><span>Fit insights dashboard</span></li>
+            <li><span>Full brand customisation</span></li>
+            <li><span>Priority support</span></li>
+          </ul>
+          <a href="#demo" class="btn btn-red">Book a demo</a>
+        </article>
+        <article class="card price-card reveal" data-delay="2">
+          <span class="tag">Enterprise</span>
+          <div class="amt">Custom</div>
+          <p style="margin:0">For global retailers and multi-brand groups.</p>
+          <ul class="check-list">
+            <li><span>Unlimited try-ons</span></li>
+            <li><span>Headless API &amp; SDKs</span></li>
+            <li><span>SSO, SLA &amp; dedicated CSM</span></li>
+            <li><span>Custom size-chart modelling</span></li>
+          </ul>
+          <a href="#demo" class="btn btn-ghost">Talk to sales</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- demo -->
+  <section class="section" id="demo" style="padding-top:0">
+    <div class="container demo-wrap">
+      <div class="section-head reveal" style="margin:0">
+        <span class="eyebrow">Book a demo</span>
+        <h2>See FitMirror 360 on <span class="red">your</span> products.</h2>
+        <p class="lead">Tell us about your store and we'll show you a live try-on with your own catalogue — usually within two working days.</p>
+        <ul class="check-list" style="margin-top:8px">
+          <li><span>A 30-minute walkthrough tailored to your brand</span></li>
+          <li><span>Integration plan for your platform</span></li>
+          <li><span>Pricing based on your traffic</span></li>
+        </ul>
+      </div>
+      <form class="panel demo-form reveal" id="demoForm" data-delay="1">
+        <div class="two">
+          <div class="field"><label for="f-name">Full name</label><input class="input" id="f-name" required autocomplete="name" placeholder="Alex Morgan" /></div>
+          <div class="field"><label for="f-email">Work email</label><input class="input" id="f-email" type="email" required autocomplete="email" placeholder="alex@brand.com" /></div>
+        </div>
+        <div class="two">
+          <div class="field"><label for="f-co">Brand</label><input class="input" id="f-co" required autocomplete="organization" placeholder="Your brand" /></div>
+          <div class="field"><label for="f-site">Store URL</label><input class="input" id="f-site" placeholder="yourbrand.com" /></div>
+        </div>
+        <div class="two">
+          <div class="field"><label for="f-plat">Platform</label>
+            <select class="input select" id="f-plat"><option>Shopify</option><option>WooCommerce</option><option>Magento</option><option>BigCommerce</option><option>Salesforce Commerce</option><option>Custom / headless</option></select>
+          </div>
+          <div class="field"><label for="f-vol">Monthly orders</label>
+            <select class="input select" id="f-vol"><option>Under 1,000</option><option>1,000 – 10,000</option><option>10,000 – 50,000</option><option>50,000+</option></select>
+          </div>
+        </div>
+        <div class="field"><label for="f-msg">Anything we should know?</label><textarea class="input" id="f-msg" rows="3" placeholder="Categories you sell, goals, timelines…"></textarea></div>
+        <button class="btn btn-red btn-lg" type="submit">Request my demo</button>
+        <small style="color:var(--dim);text-align:center">We'll only use your details to arrange your demo.</small>
+        <div class="form-success">
+          <span class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+          <h3>Demo request received</h3>
+          <p style="color:var(--muted);margin:0;max-width:340px" id="successMsg">Thanks! Our partnerships team will email you shortly to schedule your walkthrough.</p>
+          <button type="button" class="btn btn-ghost btn-sm" id="againBtn">Submit another request</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="cta-band reveal">
+        <div>
+          <h2>Let shoppers see it before they buy it.</h2>
+          <p>Bring the fitting room online — on every product, for every body.</p>
+        </div>
+        <div class="actions">
+          <a href="#demo" class="btn btn-black btn-lg">Book a demo</a>
+          <a href="/studio" class="btn btn-white btn-lg">Try the studio</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- try-on modal (widget preview) -->
+<div class="modal" id="fmModal" role="dialog" aria-modal="true" aria-labelledby="fmModalTitle">
+  <div class="modal-box">
+    <div class="modal-head"><img src="/assets/logo.png" alt="FitMirror 360" /><button class="modal-close" id="fmClose" aria-label="Close">×</button></div>
+    <div><h3 id="fmModalTitle">Find your fit</h3><p style="color:var(--muted);margin:6px 0 0;font-size:14.5px">Enter your measurements to build your avatar and try on the Oversized Crew Tee.</p></div>
+    <form id="fmForm" style="display:grid;gap:12px">
+      <div class="two">
+        <div class="field"><label for="w-h">Height (cm)</label><input class="input" id="w-h" type="number" value="172" min="140" max="210" required /></div>
+        <div class="field"><label for="w-c">Chest (cm)</label><input class="input" id="w-c" type="number" value="98" min="70" max="150" required /></div>
+      </div>
+      <div class="two">
+        <div class="field"><label for="w-w">Waist (cm)</label><input class="input" id="w-w" type="number" value="82" min="55" max="150" required /></div>
+        <div class="field"><label for="w-p">Hips (cm)</label><input class="input" id="w-p" type="number" value="100" min="75" max="160" required /></div>
+      </div>
+      <button class="btn btn-red" type="submit" style="width:100%">Generate my avatar</button>
+    </form>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="/assets/logo.png" alt="FitMirror 360" width="518" height="367" />
+        <p>AI-powered virtual try-on that bridges the physical fitting room and online shopping. Don't just imagine the fit — see it before you buy it.</p>
+      </div>
+      <div><h4>Product</h4><ul><li><a href="/studio">Try-On Studio</a></li><li><a href="/#how">How it works</a></li><li><a href="/#faq">FAQ</a></li></ul></div>
+      <div><h4>Business</h4><ul><li><a href="/brands">For Brands</a></li><li><a href="#integrate">Integration</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#demo">Book a demo</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="/#mission">Our mission</a></li><li><a href="mailto:hello@fitmirror360.com">Contact</a></li><li><a href="/privacy">Privacy</a></li><li><a href="/privacy#terms">Terms</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© <span data-year></span> FitMirror 360. All rights reserved.</span></div>
+  </div>
+</footer>
+
+<script type="module" src="/js/main.js"></script>
+<script type="module">
+  import { toast } from "/js/main.js";
+  const $ = (s) => document.querySelector(s);
+
+  // code tabs
+  const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const SNIPPETS = {
+    html: {
+      raw: `<!-- FitMirror 360 try-on widget -->\n<script src="https://cdn.fitmirror360.com/widget.js"\n        data-key="pk_live_your_brand_key" async><\/script>\n\n<button data-fitmirror\n        data-product-id="oversized-crew-tee">\n  Try it on in 360°\n</button>`,
+      html: `<span class="c">&lt;!-- FitMirror 360 try-on widget --&gt;</span>\n&lt;<span class="k">script</span> <span class="a">src</span>=<span class="s">"https://cdn.fitmirror360.com/widget.js"</span>\n        <span class="a">data-key</span>=<span class="s">"pk_live_your_brand_key"</span> <span class="a">async</span>&gt;&lt;/<span class="k">script</span>&gt;\n\n&lt;<span class="k">button</span> <span class="a">data-fitmirror</span>\n        <span class="a">data-product-id</span>=<span class="s">"oversized-crew-tee"</span>&gt;\n  Try it on in 360°\n&lt;/<span class="k">button</span>&gt;`,
+    },
+    shopify: {
+      raw: `{% comment %} sections/main-product.liquid {% endcomment %}\n{% render 'fitmirror-button',\n   product: product,\n   theme: 'dark',\n   placement: 'above-add-to-cart' %}`,
+      html: `<span class="c">{% comment %} sections/main-product.liquid {% endcomment %}</span>\n{% <span class="k">render</span> <span class="s">'fitmirror-button'</span>,\n   <span class="a">product</span>: product,\n   <span class="a">theme</span>: <span class="s">'dark'</span>,\n   <span class="a">placement</span>: <span class="s">'above-add-to-cart'</span> %}`,
+    },
+    react: {
+      raw: `import { FitMirrorButton } from "@fitmirror360/react";\n\nexport function ProductActions({ product }) {\n  return (\n    <FitMirrorButton\n      productId={product.id}\n      onSizeRecommended={(size) => selectSize(size)}\n    />\n  );\n}`,
+      html: `<span class="k">import</span> { FitMirrorButton } <span class="k">from</span> <span class="s">"@fitmirror360/react"</span>;\n\n<span class="k">export function</span> <span class="a">ProductActions</span>({ product }) {\n  <span class="k">return</span> (\n    &lt;<span class="a">FitMirrorButton</span>\n      productId={product.id}\n      onSizeRecommended={(size) =&gt; selectSize(size)}\n    /&gt;\n  );\n}`,
+    },
+  };
+  let cur = "html";
+  const showCode = () => ($("#codeBox").innerHTML = SNIPPETS[cur].html);
+  $("#codeTabs").addEventListener("click", (e) => {
+    const b = e.target.closest("button"); if (!b) return;
+    cur = b.dataset.t;
+    $("#codeTabs").querySelectorAll("button").forEach((x) => x.classList.toggle("on", x === b));
+    showCode();
+  });
+  showCode();
+  $("#copyBtn").addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText(SNIPPETS[cur].raw); } catch {}
+    $("#copyBtn").textContent = "Copied ✓";
+    setTimeout(() => ($("#copyBtn").textContent = "Copy"), 1600);
+  });
+
+  // pricing toggle
+  $("#billSeg").addEventListener("click", (e) => {
+    const b = e.target.closest("button"); if (!b) return;
+    $("#billSeg").querySelectorAll("button").forEach((x) => x.classList.toggle("on", x === b));
+    document.querySelectorAll("[data-m]").forEach((el) => (el.textContent = "£" + el.dataset[b.dataset.v]));
+  });
+
+  // demo form
+  const form = $("#demoForm");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = $("#f-name").value.trim().split(" ")[0];
+    $("#successMsg").textContent = `Thanks ${name}! Our partnerships team will email ${$("#f-email").value} shortly to schedule your walkthrough.`;
+    form.classList.add("done");
+  });
+  $("#againBtn").addEventListener("click", () => { form.reset(); form.classList.remove("done"); });
+
+  // widget preview
+  const modal = $("#fmModal");
+  const open = () => { modal.classList.add("show"); setTimeout(() => $("#w-c").focus(), 200); };
+  const close = () => modal.classList.remove("show");
+  $("#fmBtn").addEventListener("click", open);
+  $("#fmClose").addEventListener("click", close);
+  modal.addEventListener("click", (e) => { if (e.target === modal) close(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
+
+  let av = null;
+  $("#fmForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const b = { height: +$("#w-h").value, chest: +$("#w-c").value, waist: +$("#w-w").value, hips: +$("#w-p").value };
+    close();
+    const chart = [86, 92, 98, 106, 114];
+    const names = ["XS", "S", "M", "L", "XL"];
+    let idx = chart.findIndex((c) => c + 6 >= b.chest + 3);
+    if (idx < 0) idx = chart.length - 1;
+    const size = names[idx];
+    const ease = chart[idx] + 6 - b.chest;
+    const chestTxt = ease > 9 ? "relaxed through the chest" : ease >= 2 ? "true to fit through the chest" : "snug through the chest";
+    if (!av) {
+      const { createAvatar } = await import("/js/avatar.js");
+      $("#shopTee").style.display = "none";
+      av = createAvatar($("#shopImg"), { interactive: true, autoRotate: true, rotateSpeed: 2.2 });
+      $("#shopImg").style.background = "radial-gradient(60% 50% at 50% 75%, rgba(227,21,43,.35), transparent 70%), linear-gradient(180deg,#151515,#070707)";
+      $("#shopBadge").textContent = "YOUR AVATAR · 360°";
+      $("#shopBadge").style.background = "#e3152b";
+    }
+    av.setBody({ ...b, shoulder: 40 + (b.chest - 84) * 0.12, inseam: b.height * 0.46 });
+    av.setGarment({ type: "top", color: "#e3152b", factors: { chest: (chart[idx] + 6) / b.chest, waist: (chart[idx] - 14) / b.waist + 0.06, hips: 1.05 } });
+    av.pulse();
+    document.querySelectorAll("#shopSizes span").forEach((s) => { s.classList.toggle("rec", s.textContent === size); s.classList.toggle("on", s.textContent === size); });
+    $("#fmResult").innerHTML = `Your best fit: <b>Size ${size}</b> · ${chestTxt}, length ideal for ${b.height} cm.`;
+    $("#fmResult").classList.add("show");
+  });
+  $("#addCart").addEventListener("click", () => {
+    const s = document.querySelector("#shopSizes span.on")?.textContent || "M";
+    toast(`Oversized Crew Tee (${s}) added to bag.`);
+  });
+  document.querySelectorAll("#shopSizes span").forEach((s) => s.addEventListener("click", () => {
+    document.querySelectorAll("#shopSizes span").forEach((x) => x.classList.toggle("on", x === s));
+  }));
+</script>
+</body>
+</html>
