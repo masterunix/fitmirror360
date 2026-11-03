@@ -46,6 +46,6 @@ document.querySelectorAll("form[data-newsletter]").forEach((f) =>
   f.addEventListener("submit", (e) => {
     e.preventDefault();
     f.reset();
-    toast("You're on the list — welcome to FitMirror 360.");
+    toast("You're on the list. Welcome to FitMirror 360.");
   })
 );

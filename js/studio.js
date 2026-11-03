@@ -157,7 +157,7 @@ function renderReport() {
   });
 
   $("#recSize").textContent = recSize;
-  $("#recText").textContent = state.size === recSize ? `Size ${recSize} fits you best` : `We recommend ${recSize} — you're viewing ${state.size}`;
+  $("#recText").textContent = state.size === recSize ? `Size ${recSize} fits you best` : `We recommend ${recSize} (viewing ${state.size})`;
   $("#recSub").textContent = `${state.garment.name} · ${TYPE_NAME[state.garment.type]} · ${state.fit} fit`;
   $("#confRing").style.setProperty("--v", rec.conf);
   $("#confVal").textContent = rec.conf + "%";
@@ -407,7 +407,7 @@ $("#shopBtn").addEventListener("click", () => toast(`${state.garment.name} in si
 $("#shareBtn").addEventListener("click", async () => {
   const url = location.origin + "/studio";
   try {
-    if (navigator.share) await navigator.share({ title: "My FitMirror 360 look", text: `${state.garment.name} in ${state.size} — see the fit before you buy it.`, url });
+    if (navigator.share) await navigator.share({ title: "My FitMirror 360 look", text: `${state.garment.name} in ${state.size}. See the fit before you buy it.`, url });
     else { await navigator.clipboard.writeText(url); toast("Link copied to clipboard."); }
   } catch {}
 });
